@@ -1,0 +1,4 @@
+panel-plugin/main.c 
+panel-plugin/commands-mocp.h
+panel-plugin/configure.h
+panel-plugin/xfce4-moc-plugin.desktop.in
