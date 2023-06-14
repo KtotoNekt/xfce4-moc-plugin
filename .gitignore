@@ -29,6 +29,6 @@ po/POTFILES
 po/stamp-it
 stamp-h1
 start.sh
-debug-panel.sh
+debug-terminal.sh
 check.sh
 .vscode/

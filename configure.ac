@@ -1,7 +1,7 @@
 dnl
-dnl xfce4-sample-plugin - A sample plugin for the Xfce panel
+dnl xfce4-moc-plugin - Xfce plugin for MOC console audio player
 dnl
-dnl 2023 John Doo <john@example.org>
+dnl 2023 Ktoto <Ktoto@ktoto.org>
 dnl
 
 dnl ***************************
@@ -13,7 +13,7 @@ dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (C) 2023
         The Xfce development team. All rights reserved.])
-AC_INIT([xfce4-sample-plugin], [xdt_version], [https://notubug.org/Ktoto], [xfce4-sample-plugin])
+AC_INIT([xfce4-moc-plugin], [xdt_version], [https://notabug.org/Ktoto], [xfce4-moc-plugin])
 AC_PREREQ([2.50])
 AC_REVISION([xdt_version_build])
 AC_CONFIG_MACRO_DIRS([m4])

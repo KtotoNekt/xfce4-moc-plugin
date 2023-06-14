@@ -1,8 +1,8 @@
 [Xfce Panel]
 Type=X-XFCE-PanelPlguin
 Encoding=UTF-8
-Name=MOC Плагин
-Comment=Xfce плагин для консольного аудиоплеера MOC
+Name=MOC Plugin
+Comment=Xfce plugin for MOC console audio player
 Icon=xfce.plugin.moc.icon
 X-XFCE-Internal=FALSE
 X-XFCE-Module=mocplugin

@@ -1,38 +1,13 @@
 #include <libxfce4panel-2.0/libxfce4panel/libxfce4panel.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
+
+#include "plugin.h"
+#include "commands.h"
+
 
 #define MOCP_COMMAND   "/usr/bin/mocp "
-
-
-enum State {
-    STOP,
-    PAUSE,
-    PLAY
-};
-
-struct UpdateData {
-    GtkButton *btn_toggle_play;
-    XfcePanelPlugin *plugin;
-};
-
-struct MocConfig {
-    XfcePanelPlugin *plugin;
-    char lastDir[100];
-    char pathFileLastDir[100];
-    char commandRunMocp[100];
-};
-
-struct MocInfo {
-    char *file;
-    char *totalTime;
-    char *currentTime;
-    enum State state;
-};
-
-
 
 
 static char* execute_command_and_get_result(char *command) {
@@ -74,38 +49,23 @@ static void update_state(GtkButton *btn, enum State state) {
 
     switch (state) {
         case PLAY:
-            image = gtk_image_new_from_icon_name("xfce.plugin.moc.pause", 32);
+            image = gtk_image_new_from_icon_name("xfce.plugin.moc.pause", GTK_ICON_SIZE_BUTTON);
             break;
         case PAUSE:
-            image = gtk_image_new_from_icon_name("xfce.plugin.moc.play", 32);
+            image = gtk_image_new_from_icon_name("xfce.plugin.moc.play", GTK_ICON_SIZE_BUTTON);
             break;
         case STOP:
-            image = gtk_image_new_from_icon_name("xfce.plugin.moc.not-run", 32);
+            image = gtk_image_new_from_icon_name("xfce.plugin.moc.not-run", GTK_ICON_SIZE_BUTTON);
             break;
     }
 
     gtk_button_set_image(btn, image);
 }
 
-static gboolean update_info(gpointer updateData) {
-    struct MocInfo info = get_info();
-    struct UpdateData *data = (struct UpdateData *) updateData;
 
-    update_state(data->btn_toggle_play, info.state);
 
-    if (info.state != STOP) {
-        gchar *markup = g_markup_printf_escaped("%s\n%s - %s", info.file, info.currentTime, info.totalTime);
-    
-        gtk_widget_set_tooltip_markup(GTK_WIDGET(data->plugin), markup);
-        g_free (markup);
-    } else {
-        gtk_widget_set_tooltip_text(GTK_WIDGET(data->plugin), ("Статус: Не запущен"));
-    }
 
-    return TRUE;
-}
-
-static void execute_command(GtkWidget *widget, gpointer data) {
+void execute_command(GtkWidget *widget, gpointer data) {
     switch (GPOINTER_TO_INT(data)) {
         case 0:
             g_spawn_command_line_async(MOCP_COMMAND "-f", NULL);
@@ -119,14 +79,28 @@ static void execute_command(GtkWidget *widget, gpointer data) {
     }
 }
 
-static void run_tui_mocp(GtkWidget *widget, gpointer data) {
-    struct MocConfig *config = (struct MocConfig *) data;
-    g_spawn_command_line_async(config->commandRunMocp, NULL);
-    g_print(config->commandRunMocp);
+gboolean update_info(struct UpdateData *data) {
+    struct MocInfo info = get_info();
+
+    update_state(data->btn_toggle_play, info.state);
+
+    if (info.state != STOP) {
+        gchar *markup = g_markup_printf_escaped("%s\n%s - %s", info.file, info.currentTime, info.totalTime);
+    
+        gtk_widget_set_tooltip_markup(GTK_WIDGET(data->plugin), markup);
+        g_free (markup);
+    } else {
+        gtk_widget_set_tooltip_text(GTK_WIDGET(data->plugin), _("State: STOP"));
+    }
+
+    return TRUE;
 }
 
-static void run_server_mocp(GtkWidget *widget, gpointer data) {
-    struct MocConfig *config = (struct MocConfig *) data;
+void run_tui_mocp(GtkWidget *widget, struct MocConfig *config) {
+    g_spawn_command_line_async(config->commandRunMocp, NULL);
+}
+
+void run_server_mocp(GtkWidget *widget, struct MocConfig *config) {
     char command[512];
     snprintf(command, sizeof command, "%s%s%s%s", MOCP_COMMAND, "-l ", config->lastDir, "/*");
 

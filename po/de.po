@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-moc-plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce-panel-plugins.xfce4-moc-plugin\n"
+"PO-Revision-Date: 2023-06-09 20:20+0000\n"
+"Last-Translator: Ktoto 2023\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: panel-plugin/plugin.c:138
+msgid "Start the MOC server"
+msgstr "Starten Sie den MOC-Server"
+
+#: panel-plugins/main.c:139
+msgid "Open MOC"
+msgstr "Öffnen Sie das MOC"
+
+#: panel-plugin/commands.c:93
+msgid "State: STOP"
+msgstr "Status: Nicht gestartet"
+
+#: panel-plugin/plugin-dialogs.c:50
+msgid "Options"
+msgstr "Optionen"
+
+#: panel-plugin/plugin-dialogs.c:72
+msgid "Music folder:"
+msgstr "Musikordner:"
+
+#: panel-plugin/plugin-dialogs.c:67
+msgid "Folder selection"
+msgstr "Ordnerauswahl"
+
+#: panel-plugin/plugin-dialogs.c:81
+msgid "MOC launch command:"
+msgstr "MOС-Startbefehl:"
+
+#: panel-plugin/xfce4-moc-plugin.desktop.in:4
+msgid "MOC Plugin"
+msgstr "MOC-Plugin"
+
+#: panel-plugin/plugin-dialogs.c:96 panel-plugin/xfce4-moc-plugin.desktop.in:5
+msgid "Xfce plugin for MOC console audio player"
+msgstr "Xfce-Plugin für den MOC-Konsolen-Audioplayer"

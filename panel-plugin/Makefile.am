@@ -4,9 +4,6 @@ AM_CPPFLAGS = \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
 	$(PLATFORM_CPPFLAGS)
 
-#
-# Sample plugin
-#
 plugin_LTLIBRARIES = \
 	libmocplugin.la
 
@@ -14,9 +11,12 @@ plugindir = \
 	$(libdir)/xfce4/panel/plugins
 
 libmocplugin_la_SOURCES = \
-	main.c \
-	commands-mocp.h \
-	configure.h
+	plugin.c \
+	plugin.h \
+	plugin-dialogs.c \
+	plguin-dialogs.h \
+	commands.c \
+	commands.h
 
 libmocplugin_la_CFLAGS = \
 	$(LIBXFCE4UTIL_CFLAGS) \
