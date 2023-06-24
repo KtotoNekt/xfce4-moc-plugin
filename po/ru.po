@@ -15,38 +15,62 @@ msgstr ""
 "Language-Team: Russian"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: panel-plugin/plugin.c:138
+#: panel-plugin/plugin.c:152
 msgid "Start the MOC server"
 msgstr "Запустить сервер MOC"
 
-#: panel-plugins/main.c:139
+#: panel-plugins/main.c:153
 msgid "Open MOC"
 msgstr "Открыть MOC"
+
+#: panel-plugins/main.c:154
+msgid "Play playlist"
+msgstr "Воспроизвести плейлист"
 
 #: panel-plugin/commands.c:93
 msgid "State: STOP"
 msgstr "Статус: Не запущен"
 
-#: panel-plugin/plugin-dialogs.c:50
+#: panel-plugin/plugin-dialogs.c:73
 msgid "Options"
 msgstr "Настройки"
 
-#: panel-plugin/plugin-dialogs.c:72
-msgid "Music folder:"
-msgstr "Папка с музыкой:"
+#: panel-plugin/plugin-dialogs.c:85
+msgid "<b>General</b>"
+msgstr "<b>Общее</b>"
 
-#: panel-plugin/plugin-dialogs.c:67
+#: panel-plugin/plugin-dialogs.c:90
 msgid "Folder selection"
 msgstr "Выбор папки"
 
-#: panel-plugin/plugin-dialogs.c:81
+#: panel-plugin/plugin-dialogs.c:95
+msgid "Music folder:"
+msgstr "Папка с музыкой:"
+
+#: panel-plugin/plugin-dialogs.c:103
 msgid "MOC launch command:"
 msgstr "Команда запуска MOC:"
+
+#: panel-plugin/plugin-dialogs.c:108
+msgid "<b>At startup enable...</b>"
+msgstr "<b>При запуске включить...</b>"
+
+#: panel-plugin/plugin-dialogs.c:113
+msgid "Repeat"
+msgstr "Повторять"
+
+#: panel-plugin/plugin-dialogs.c:116
+msgid "Shuffle"
+msgstr "Перемешать"
+
+#: panel-plugin/plugin-dialogs.c:119
+msgid "Autonext"
+msgstr "Автоматически продолжить"
 
 #: panel-plugin/xfce4-moc-plugin.desktop.in:4
 msgid "MOC Plugin"
 msgstr "MOC Плагин"
 
-#: panel-plugin/plugin-dialogs.c:96 panel-plugin/xfce4-moc-plugin.desktop.in:5
+#: panel-plugin/plugin-dialogs.c:134 panel-plugin/xfce4-moc-plugin.desktop.in:5
 msgid "Xfce plugin for MOC console audio player"
 msgstr "Xfce плагин для консольного аудиоплеера MOC"

@@ -32,3 +32,16 @@ start.sh
 debug-terminal.sh
 check.sh
 .vscode/
+ABOUT-NLS
+panel-plugin/xfce4-moc-plugin.desktop
+po/Makevars.template
+po/Rules-quot
+po/boldquot.sed
+po/en@boldquot.header
+po/en@quot.header
+po/insert-header.sin
+po/quot.sed
+po/remove-potcdate.sed
+po/remove-potcdate.sin
+po/stamp-po
+po/xfce4-moc-plugin.pot

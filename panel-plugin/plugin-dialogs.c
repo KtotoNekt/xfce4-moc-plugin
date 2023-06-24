@@ -10,7 +10,7 @@
 
 
 
-#define PACKAGE_VERSION "0.1.0"
+#define PACKAGE_VERSION "0.1.1"
 #define PACKAGE_NAME "xfce4-moc-plugin"
 
 
@@ -39,6 +39,29 @@ static void set_last_dir_mocp(GtkWidget *widget, struct MocConfig *config) {
     FILE *fp = fopen(config->pathFileLastDir, "w");
     fprintf(fp, "%s", config->lastDir);
     fclose(fp);
+}
+
+static void set_moc_repeat(GtkWidget *chooser, struct MocConfig *config) {
+    config->repeat = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chooser));
+}
+
+static void set_moc_shuffle(GtkWidget *chooser, struct MocConfig *config) {
+    config->shuffle = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chooser));
+}
+
+static void set_moc_autonext(GtkWidget *chooser, struct MocConfig *config) {
+    config->autonext = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chooser));
+}
+
+
+static GtkWidget *setup_chooser_toggle_button(GtkWidget *grid, gint top, gboolean active, const gchar *label) {
+    GtkWidget *chooser = gtk_check_button_new();
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chooser), active);
+
+    new_label (GTK_GRID (grid), top, label, chooser);
+    gtk_grid_attach (GTK_GRID (grid), chooser, 1, top, 1, 1);
+
+    return chooser;
 }
 
 
@@ -81,6 +104,21 @@ void moc_configure_create(XfcePanelPlugin *plugin, struct MocConfig *config) {
     gtk_grid_attach (GTK_GRID (grid), entry, 1, 3, 1, 1);
 
 
+    label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (label), _("<b>At startup enable...</b>"));
+    gtk_widget_set_halign(label, GTK_ALIGN_START);
+    gtk_widget_set_valign(label, GTK_ALIGN_CENTER);
+    gtk_grid_attach (GTK_GRID (grid), label, 0, 4, 1, 1);
+
+    chooser = setup_chooser_toggle_button(grid, 5, config->repeat, _("Repeat"));
+    g_signal_connect(G_OBJECT(chooser), "clicked", G_CALLBACK(set_moc_repeat), config);
+
+    chooser = setup_chooser_toggle_button(grid, 6, config->shuffle, _("Shuffle"));
+    g_signal_connect(G_OBJECT(chooser), "clicked", G_CALLBACK(set_moc_shuffle), config);
+
+    chooser = setup_chooser_toggle_button(grid, 7, config->autonext, _("Autonext"));
+    g_signal_connect(G_OBJECT(chooser), "clicked", G_CALLBACK(set_moc_autonext), config);
+
 
     gtk_widget_show_all(dlg);
 }
@@ -98,9 +136,3 @@ void moc_show_about(XfcePanelPlugin *plugin, struct MocConfig *config) {
       "copyright", "Copyright \302\251 2003-2023 The Xfce development team",
       "author", "Ktoto <ktoto@ktoto.org>", NULL);
 }
-
-
-
-
-
-

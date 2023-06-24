@@ -19,6 +19,9 @@ struct MocConfig {
     char lastDir[100];
     char pathFileLastDir[100];
     char commandRunMocp[100];
+    gboolean repeat;
+    gboolean shuffle;
+    gboolean autonext;
 };
 
 struct MocInfo {

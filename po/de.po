@@ -16,38 +16,62 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: panel-plugin/plugin.c:138
+#: panel-plugin/plugin.c:152
 msgid "Start the MOC server"
 msgstr "Starten Sie den MOC-Server"
 
-#: panel-plugins/main.c:139
+#: panel-plugins/main.c:153
 msgid "Open MOC"
 msgstr "Öffnen Sie das MOC"
+
+#: panel-plugins/main.c:154
+msgid "Play playlist"
+msgstr "Playlist abspielen"
 
 #: panel-plugin/commands.c:93
 msgid "State: STOP"
 msgstr "Status: Nicht gestartet"
 
-#: panel-plugin/plugin-dialogs.c:50
+#: panel-plugin/plugin-dialogs.c:73
 msgid "Options"
 msgstr "Optionen"
 
-#: panel-plugin/plugin-dialogs.c:72
-msgid "Music folder:"
-msgstr "Musikordner:"
+#: panel-plugin/plugin-dialogs.c:85
+msgid "<b>General</b>"
+msgstr "<b>Allgemein</b>"
 
-#: panel-plugin/plugin-dialogs.c:67
+#: panel-plugin/plugin-dialogs.c:90
 msgid "Folder selection"
 msgstr "Ordnerauswahl"
 
-#: panel-plugin/plugin-dialogs.c:81
+#: panel-plugin/plugin-dialogs.c:95
+msgid "Music folder:"
+msgstr "Musikordner:"
+
+#: panel-plugin/plugin-dialogs.c:103
 msgid "MOC launch command:"
 msgstr "MOС-Startbefehl:"
+
+#: panel-plugin/plugin-dialogs.c:108
+msgid "<b>At startup enable...</b>"
+msgstr "<b>Aktivieren Sie beim Start...</b>"
+
+#: panel-plugin/plugin-dialogs.c:113
+msgid "Repeat"
+msgstr "Wiederholen"
+
+#: panel-plugin/plugin-dialogs.c:116
+msgid "Shuffle"
+msgstr "Rühren"
+
+#: panel-plugin/plugin-dialogs.c:119
+msgid "Autonext"
+msgstr "Automatisch weiter"
 
 #: panel-plugin/xfce4-moc-plugin.desktop.in:4
 msgid "MOC Plugin"
 msgstr "MOC-Plugin"
 
-#: panel-plugin/plugin-dialogs.c:96 panel-plugin/xfce4-moc-plugin.desktop.in:5
+#: panel-plugin/plugin-dialogs.c:134 panel-plugin/xfce4-moc-plugin.desktop.in:5
 msgid "Xfce plugin for MOC console audio player"
 msgstr "Xfce-Plugin für den MOC-Konsolen-Audioplayer"

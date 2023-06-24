@@ -11,6 +11,8 @@ void run_tui_mocp(GtkWidget *widget, struct MocConfig *config);
 
 void run_server_mocp(GtkWidget *widget, struct MocConfig *config);
 
+void run_server_mocp_playlist(GtkWidget *widget, struct MocConfig *config);
+
 G_END_DECLS
 
 #endif

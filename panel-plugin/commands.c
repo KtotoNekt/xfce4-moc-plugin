@@ -96,14 +96,45 @@ gboolean update_info(struct UpdateData *data) {
     return TRUE;
 }
 
+static void exec_command_set_option_moc(gboolean option, char *option_str) {
+    char command[512];
+    
+    if (option) {
+        snprintf(command, sizeof command, "%s%s%s", MOCP_COMMAND, "-o ", option_str);
+    } else {
+        snprintf(command, sizeof command, "%s%s%s", MOCP_COMMAND, "-u ", option_str);
+    }
+
+    system(command);
+}
+
+static void init_moc(struct MocConfig *config) {
+    exec_command_set_option_moc(config->repeat, "repeat");
+
+    exec_command_set_option_moc(config->shuffle, "shuffle");
+
+    exec_command_set_option_moc(config->autonext, "autonext");
+}
+
 void run_tui_mocp(GtkWidget *widget, struct MocConfig *config) {
+    init_moc(config);
+
     g_spawn_command_line_async(config->commandRunMocp, NULL);
 }
 
 void run_server_mocp(GtkWidget *widget, struct MocConfig *config) {
+    init_moc(config);
+
     char command[512];
     snprintf(command, sizeof command, "%s%s%s%s", MOCP_COMMAND, "-l ", config->lastDir, "/*");
 
     system(MOCP_COMMAND "-S");
     system(command);
+}
+
+void run_server_mocp_playlist(GtkWidget *widget, struct MocConfig *config) {
+    init_moc(config);
+
+    system(MOCP_COMMAND "-S");
+    system(MOCP_COMMAND "-p");
 }

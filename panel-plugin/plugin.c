@@ -49,7 +49,13 @@ void plugin_save(XfcePanelPlugin *plugin, struct MocConfig *config) {
 
     if (G_LIKELY(rc != NULL)) {
         g_print("%s\n", config->commandRunMocp);
+
         xfce_rc_write_entry(rc, "command-run-mocp", config->commandRunMocp);
+
+        xfce_rc_write_bool_entry(rc, "repeat", config->repeat);
+        xfce_rc_write_bool_entry(rc, "shuffle", config->shuffle);
+        xfce_rc_write_bool_entry(rc, "autonext", config->autonext);
+
         xfce_rc_close(rc);
     }
 }
@@ -69,6 +75,10 @@ static void plugin_read(struct MocConfig *config) {
         if (G_LIKELY (rc != NULL)) {
             command = xfce_rc_read_entry(rc, "command-run-mocp", "xfce4-terminal -e mocp");
             strcpy(config->commandRunMocp, (const char*)command);
+            config->repeat = xfce_rc_read_bool_entry(rc, "repeat", FALSE);
+            config->shuffle = xfce_rc_read_bool_entry(rc, "shuffle", FALSE);
+            config->autonext = xfce_rc_read_bool_entry(rc, "autonext", TRUE);
+
             xfce_rc_close (rc);
 
             return;
@@ -76,6 +86,10 @@ static void plugin_read(struct MocConfig *config) {
     }
 
     strcpy(config->commandRunMocp, "xfce4-terminal -e mocp");
+
+    config->repeat = FALSE;
+    config->shuffle = FALSE;
+    config->autonext = TRUE;
 }
 
 
@@ -137,8 +151,10 @@ static void constructor(XfcePanelPlugin *plugin)  {
     
     GtkWidget *run_server_layout = gtk_menu_item_new_with_label (_("Start the MOC server"));
     GtkWidget *open_launch_layout = gtk_menu_item_new_with_label(_("Open MOC"));
+    GtkWidget *run_server_playlist_layout = gtk_menu_item_new_with_label (_("Play playlist"));
 
     setup_menu_item(plugin, run_server_layout, run_server_mocp, config);
+    setup_menu_item(plugin, run_server_playlist_layout, run_server_mocp_playlist, config);
     setup_menu_item(plugin, open_launch_layout, run_tui_mocp, config);
 
     gtk_widget_show_all(window);
