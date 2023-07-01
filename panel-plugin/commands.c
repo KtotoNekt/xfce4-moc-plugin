@@ -117,24 +117,24 @@ static void init_moc(struct MocConfig *config) {
 }
 
 void run_tui_mocp(GtkWidget *widget, struct MocConfig *config) {
-    init_moc(config);
+    system(config->commandRunMocp);
 
-    g_spawn_command_line_async(config->commandRunMocp, NULL);
+    init_moc(config);
 }
 
 void run_server_mocp(GtkWidget *widget, struct MocConfig *config) {
-    init_moc(config);
-
     char command[512];
     snprintf(command, sizeof command, "%s%s%s%s", MOCP_COMMAND, "-l ", config->lastDir, "/*");
 
     system(MOCP_COMMAND "-S");
     system(command);
+
+    init_moc(config);
 }
 
 void run_server_mocp_playlist(GtkWidget *widget, struct MocConfig *config) {
-    init_moc(config);
-
     system(MOCP_COMMAND "-S");
     system(MOCP_COMMAND "-p");
+
+    init_moc(config);
 }
